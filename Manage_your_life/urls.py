@@ -15,9 +15,28 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from main import views
+import main.views
+import note.views
+import calendar_app.views
+import todo_list.views
 
+#main
 urlpatterns = [
-    url(r'^$', views.Homepage,name="Homepage"),
+    url(r'^$', main.views.Homepage,name="Homepage"),
     url(r'^admin/', admin.site.urls),
+]
+
+#note
+urlpatterns+=[
+    url(r'^note$',note.views.Homepage,name='Note Homepage'),
+]
+
+#todo_list
+urlpatterns+=[
+    url(r'^todo_list$',todo_list.views.Homepage,name='Todo_list Homepage'),
+]
+
+#calendar_app
+urlpatterns+=[
+    url(r'^calendar$',calendar_app.views.Homepage,name='Calendar Homepage'),
 ]
