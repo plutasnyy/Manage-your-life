@@ -1,7 +1,42 @@
+/*Login panel*/
+footer{
+  padding-right: 3%;
+  padding-top: 11px;
+  height: 50px;
+  float:right;
+}
+
+#username, #password{
+  margin-right: 15px;
+  float:left;
+  height: 28px;
+  padding-left: 10px;
+	font-size: 12px;
+	width: 150px;
+	border: 1px solid silver;
+	inline: 5px solid #ebebeb;
+}
+
+/*Header*/
+header{
+  padding-top: 200px;
+  height: 400px;
+  text-align: center;
+  background-color: lightgreen;
+  margin-top: 15px;
+}
+
+p1{
+  font-size: 20px;
+}
+
+
+/*Boxes*/
 .link_box{
-  width: : : 300;
-  background-color: blue;
+  height: 300px;
+  background-color: lightblue;
   border-style: solid;
   border-color: white;
   text-align: center;
+  margin-bottom:15px;
 }
