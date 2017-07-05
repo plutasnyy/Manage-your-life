@@ -17,7 +17,14 @@ footer{
 	border: 1px solid silver;
 	inline: 5px solid #ebebeb;
 }
-
+#login_button{
+  height:28px;
+  background-color: white;
+	border: 1px solid silver;
+}
+#login_button:hover{
+  background-color: silver;
+}
 /*Header*/
 header{
   padding-top: 200px;
