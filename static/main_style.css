@@ -6,8 +6,9 @@ footer{
   float:right;
   margin-bottom: 15px;
 }
-
-#username, #password{
+label{
+ visibility: hidden;}
+p{
   margin-right: 15px;
   float:left;
   height: 28px;
