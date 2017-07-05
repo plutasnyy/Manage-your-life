@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+
+from django.contrib.auth import views as auth_views
+    
 import main.views
 import note.views
 import calendar_app.views
@@ -22,6 +25,9 @@ import todo_list.views
 
 #main
 urlpatterns = [
+
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^$', main.views.Homepage,name="Homepage"),
     url(r'^admin/', admin.site.urls),
 ]
