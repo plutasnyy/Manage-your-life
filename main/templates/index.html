@@ -19,17 +19,20 @@
 
       <div class="row">
         <footer>
-            <input id="username" name="username" placeholder="Username" type="text">
-            <input id="password" name="password" placeholder="Password" type="password">
-            <input id="login_button" value="Login" type="submit">
+          {% block content %}
+            <h2>Login</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Login</button>
+            </form>
+          {% endblock %}
         </footer>
       </div>
 
       <div class="row">
         <header>
-          <p1>Tekst duzy</p1>
-          <br>
-          <p2>Tekst mniejszy nizej</p2>
+
         </header>
       </div>
 

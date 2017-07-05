@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+
+from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
-    
+
 import main.views
 import note.views
 import calendar_app.views
@@ -25,10 +27,10 @@ import todo_list.views
 
 #main
 urlpatterns = [
-
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^$', main.views.Homepage,name="Homepage"),
+    url(r'^a$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout,{'template_name':'logged_out.html'}, name='logout'),
+    url(r'^$', auth_views.login, {'template_name': 'index.html'},name="Homepage"),
     url(r'^admin/', admin.site.urls),
 ]
 
