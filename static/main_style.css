@@ -4,6 +4,7 @@ footer{
   padding-top: 18px;
   height: 50px;
   float:right;
+  margin-bottom: 15px;
 }
 
 #username, #password{
@@ -23,7 +24,6 @@ header{
   height: 400px;
   text-align: center;
   background-color: lightgreen;
-  margin-top: 15px;
 }
 
 p1{
@@ -33,6 +33,8 @@ p1{
 
 /*Boxes*/
 .link_box{
+  padding-top: 150px;
+  width: 100%;
   height: 300px;
   background-color: lightblue;
   border-style: solid;
