@@ -18,14 +18,27 @@
     <div class="container">
 
       <div class="row">
+
+
         <footer>
-          {% block content %}
-            <form method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button class="login_button" type="submit">Login</button>
-            </form>
-          {% endblock %}
+
+            {% if user.is_authenticated %}
+              Hello {{user.username}}
+              <a href="{% url 'logout' %}">logout</a>
+
+            {%else%}
+              {%block content%}
+                <form method="post">
+                  {% if form.errors %}
+                  <p>Your username and password didn't match. Please try again.</p>
+                  {% endif %}
+                  {% csrf_token %}
+                  {{ form }}
+                  <button class="login_button" type="submit">Login</button>
+                </form>
+              {% endblock %}
+              
+            {%endif%}
         </footer>
       </div>
 

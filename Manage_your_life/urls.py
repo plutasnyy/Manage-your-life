@@ -27,9 +27,7 @@ import todo_list.views
 
 #main
 urlpatterns = [
-    url(r'^a$', TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout,{'template_name':'logged_out.html'}, name='logout'),
+    url(r'^logout/$', main.views.logout_view, name='logout'),
     url(r'^$', auth_views.login, {'template_name': 'index.html'},name="Homepage"),
     url(r'^admin/', admin.site.urls),
 ]
