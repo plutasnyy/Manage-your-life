@@ -31,7 +31,10 @@ p{
 	border: 1px solid silver;
 	inline: 5px solid #ebebeb;
 }
-
+p_button{
+  font-size: 12px;
+  color: black;
+}
 pe{
   float:left;
 }
@@ -39,9 +42,6 @@ pe{
   margin-left: 4px;
   float:left;
   height:28px;
-}
-.login_button:hover{
-  background-color: silver;
 }
 .errorlist{
   display: none;
