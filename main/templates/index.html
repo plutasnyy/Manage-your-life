@@ -19,7 +19,6 @@
 
       <div class="row">
 
-!
         <footer>
 
             {% if user.is_authenticated %}
@@ -34,10 +33,11 @@
                   {% endif %}
                   {% csrf_token %}
                   {{ form }}
-                  <button class="login_button" type="submit">Login</button>
+                  <button class="login_button" type="submit">Sign In</button>
                 </form>
               {% endblock %}
 
+              <button class="login_button"><a href="{% url 'Registration' %}">Sing Up</a></button>
             {%endif%}
         </footer>
       </div>
