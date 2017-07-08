@@ -24,7 +24,7 @@
 
             {% if user.is_authenticated %}
               Hello {{user.username}}
-              <a href="{% url 'logout' %}">logout</a>
+              <a href="{% url 'Logout' %}">logout</a>
 
             {%else%}
               {%block content%}
@@ -37,7 +37,7 @@
                   <button class="login_button" type="submit">Login</button>
                 </form>
               {% endblock %}
-              
+
             {%endif%}
         </footer>
       </div>

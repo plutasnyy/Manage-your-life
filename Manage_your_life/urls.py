@@ -18,7 +18,6 @@ from django.contrib import admin
 
 
 from django.views.generic.base import TemplateView
-from django.contrib.auth import views as auth_views
 
 import main.views
 import note.views
@@ -27,8 +26,8 @@ import todo_list.views
 
 #main
 urlpatterns = [
-    url(r'^logout/$', main.views.logout_view, name='logout'),
-    url(r'^$', auth_views.login, {'template_name': 'index.html'},name="Homepage"),
+    url(r'^logout/$', main.views.logout_view, name='Logout'),
+    url(r'^$', main.views.Homepage.as_view(),name="Homepage"),
     url(r'^admin/', admin.site.urls),
 ]
 
