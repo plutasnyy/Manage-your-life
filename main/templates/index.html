@@ -26,18 +26,16 @@
               <a href="{% url 'Logout' %}"><button class="login_button">Logout</button></a>
 
             {%else%}
-              {%block content%}
                 <form method="post">
                   {% if form.errors %}
                   <pe>Your username and password didn't match. Please try again.</pe>
                   {% endif %}
                   {% csrf_token %}
                 {{form}}
-                  <button class="login_button" type="submit">Sign In</button>
+                  <button class="login_button" type="submit" style="float:right;">Sign In</button>
                 </form>
-              {% endblock %}
+              <a href="{% url 'Registration' %}">  <button class="login_button">Sing Up</button></a>
 
-            <a href="{% url 'Registration' %}">  <button class="login_button">Sing Up</button></a>
             {%endif%}
 
         </footer>

@@ -12,6 +12,9 @@ footer{
   float:right;
   margin-bottom: 15px;
 }
+form{
+  float:left;
+}
 label{
   display: none;
   visibility: hidden;
@@ -28,16 +31,16 @@ p{
 	border: 1px solid silver;
 	inline: 5px solid #ebebeb;
 }
-pe{
 
+pe{
+  float:left;
 }
-#login_button{
-  float:right;
+.login_button{
+  margin-left: 4px;
+  float:left;
   height:28px;
-  background-color: white;
-	border: 1px solid silver;
 }
-#login_button:hover{
+.login_button:hover{
   background-color: silver;
 }
 .errorlist{
