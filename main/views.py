@@ -4,7 +4,6 @@ from  django.http import HttpResponseRedirect
 from django.contrib.auth import views as auth_views
 
 def logout_view(request):
-    print(request)
     logout(request)
     return HttpResponseRedirect('/')
 

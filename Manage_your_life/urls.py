@@ -26,6 +26,7 @@ import todo_list.views
 
 #main
 urlpatterns = [
+    url(r^'registration/', ,name='registration')
     url(r'^logout/$', main.views.logout_view, name='Logout'),
     url(r'^$', main.views.Homepage.as_view(),name="Homepage"),
     url(r'^admin/', admin.site.urls),
