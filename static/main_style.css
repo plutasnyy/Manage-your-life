@@ -1,4 +1,10 @@
 /*Login panel*/
+
+a:link { color: black ;text-decoration: none; }
+a:visited { color:black;text-decoration: none; }
+a:hover {color: black;  text-decoration: none; }
+a:active {color:black;text-decoration: none; }
+
 footer{
   padding-right: 3%;
   padding-top: 18px;
@@ -23,9 +29,10 @@ p{
 	inline: 5px solid #ebebeb;
 }
 pe{
-  
+
 }
 #login_button{
+  float:right;
   height:28px;
   background-color: white;
 	border: 1px solid silver;
@@ -36,6 +43,8 @@ pe{
 .errorlist{
   display: none;
 }
+
+
 /*Header*/
 header{
   padding-top: 200px;

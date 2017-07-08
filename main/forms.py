@@ -11,3 +11,8 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+
+class druga(SignUpForm):
+     def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].help_text = 'Big and small letters with numbers, minimum 8 signs.' # Can I change this in better way?

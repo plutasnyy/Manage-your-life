@@ -5,12 +5,12 @@ from  django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 
 
-from main.forms import SignUpForm
+from main.forms import druga
 
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = druga(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -19,7 +19,7 @@ def signup(request):
             login(request, user)
             return redirect('Homepage')
     else:
-        form = SignUpForm()
+        form = druga()
     return render(request, 'registration.html', {'form': form})
 
 def logout_view(request):
