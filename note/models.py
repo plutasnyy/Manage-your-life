@@ -1,10 +1,13 @@
 from django.db import models
 from datetime import datetime
 
+from django.contrib.auth.models import User
+
 class Note(models.Model):
-    title=models.CharField(max_length=64)
-    created_on=models.DateTimeField(auto_now_add=True)
-    content=models.CharField(max_length=5000)
+    title = models.CharField(max_length=200)
+    created_on = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+    author = models.CharField(User.get_username())
 
     def __str__(self):
         return self.name
