@@ -5,3 +5,4 @@ class NoteForm(forms.ModelForm):
     class Meta:
         model=Note
         exclude=('modified', )
+        fields=['title','content']
