@@ -4,6 +4,8 @@ from note.models import Note as Note_model
 from note.forms import NoteForm
 
 def Homepage(request):
+    print("lol")
+    print(request)
     if request.user.is_authenticated():
         username = request.user.id
         notes_list=Note_model.objects.all().filter(author=username)
