@@ -8,11 +8,12 @@ def Homepage(request):
     print(request)
     if request.user.is_authenticated():
         username = request.user.id
-        notes_list=Note_model.objects.all().filter(author=username)
+        notes_list=Note_model.objects.all().filter(created_by=username)
 
         if request.method == 'POST':
             form = NoteForm(request.POST)
             if form.is_valid():
+                form.created_by=username
                 form.save()
                 return HttpResponseRedirect('/note')
         else:

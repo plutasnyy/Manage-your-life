@@ -1,13 +1,14 @@
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br></br>
 
-Notatki:</br>
+Notes:</br>
 {% for note in notes_list%}
 tytul:  {{note.title}}</br>
+autor: {{note.created_by}}</br>
 data: {{note.created_on}}</br>
 tresc: {{note.content}}</br></br>
 {% endfor %}
 
-Dodaj:
+Add:
 {% csrf_token %}
 <form method="post">
   {% csrf_token %}
@@ -22,5 +23,5 @@ Dodaj:
       {% endfor %}
     </p>
   {% endfor %}
-  <button type="submit">Sign up</button>
+  <button type="submit">Zapisz</button>
 </form>
