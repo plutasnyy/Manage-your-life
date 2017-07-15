@@ -5,10 +5,10 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 class Note(models.Model):
-    title = models.CharField(max_length=200,null=True)
+    title = models.CharField(max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(null=True)
-    created_by = models.ForeignKey(User, related_name='todo_created_by',null=True)
+    content = models.TextField()
+    created_by = models.ForeignKey(User)
     id=models.AutoField(primary_key=True)
 
     def __str__(self):
