@@ -7,6 +7,8 @@ tytul:  {{note.title}}</br>
 autor: {{note.created_by}}</br>
 data: {{note.created_on}}</br>
 tresc: {{note.content}}</br></br>
+
+{% csrf_token %}
 <form action="{% url 'note_delete' note.id %}" method="POST">
   <button type="submit">Delete</button>
 </form>

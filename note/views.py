@@ -22,5 +22,8 @@ def Homepage(request):
         return HttpResponseRedirect('/')
 
 def note_delete(request,id):
-
+    if request.method == 'POST':
+        form=NoteForm(request.POST)
+        if form.is_valid():
+            form.delete()
     return HttpResponseRedirect('/note')
