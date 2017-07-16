@@ -4,8 +4,6 @@ from note.models import Note as Note_model
 from note.forms import NoteForm
 
 def Homepage(request):
-    print("lol")
-    print(request)
     if request.user.is_authenticated():
         user = request.user
         notes_list=Note_model.objects.all().filter(created_by=user)
@@ -22,3 +20,7 @@ def Homepage(request):
         return render(request,'note.html',{'notes_list':notes_list,'form':form})
     else:
         return HttpResponseRedirect('/')
+
+def note_delete(request,id):
+
+    return HttpResponseRedirect('/')
