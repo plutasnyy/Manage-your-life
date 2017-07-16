@@ -23,4 +23,4 @@ def Homepage(request):
 
 def note_delete(request,id):
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/note')
