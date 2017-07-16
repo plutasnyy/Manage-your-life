@@ -23,7 +23,6 @@ def Homepage(request):
 
 def note_delete(request,id):
     if request.method == 'POST':
-        form=NoteForm(request.POST)
-        if form.is_valid():
-            form.delete()
+        note=Note_model.objects.all().filter(id=id)
+        note.delete()        
     return HttpResponseRedirect('/note')
