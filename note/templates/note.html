@@ -1,10 +1,10 @@
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br></br>
 
 Notes:</br>
+
 {% for note in notes_list%}
 Title:  {{note.title}}</br>
 Content: {{note.content}}</br>
-
 
 <a href="{% url 'Note Update' note.id%}"><button type="submit" style="float:left;">Edit</button></a>
 <form action="{% url 'Note Delete' note.id %}" method="POST">

@@ -6,7 +6,7 @@ from django.views.generic.edit import UpdateView
 from note.models import Note as Note_model
 from note.forms import NoteForm
 
-def Homepage(request):
+def homepage(request):
     if request.user.is_authenticated():
         user = request.user
         notes_list=Note_model.objects.all().filter(created_by=user)
