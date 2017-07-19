@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+
+from django.views.generic.edit import UpdateView
+
 from note.models import Note as Note_model
 from note.forms import NoteForm
 
@@ -7,6 +10,7 @@ def Homepage(request):
     if request.user.is_authenticated():
         user = request.user
         notes_list=Note_model.objects.all().filter(created_by=user)
+        notes_list=sorted(notes_list,key=lambda x:x.created_on,reverse=True)
 
         if request.method == 'POST':
             form = NoteForm(request.POST)
@@ -26,8 +30,6 @@ def note_delete(request,id):
         note=Note_model.objects.all().filter(id=id)
         note.delete()
     return HttpResponseRedirect('/note')
-
-from django.views.generic.edit import UpdateView
 
 class NoteUpdate(UpdateView):
     model = Note_model

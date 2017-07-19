@@ -2,11 +2,8 @@
 
 Notes:</br>
 {% for note in notes_list%}
-id:  {{note.id}}</br>
-tytul:  {{note.title}}</br>
-autor: {{note.created_by}}</br>
-data: {{note.created_on}}</br>
-tresc: {{note.content}}</br></br>
+Title:  {{note.title}}</br>    
+Content: {{note.content}}</br></br>
 
 
 <a href="{% url 'Note Update' note.id%}"><button type="submit">Edit</button></a>
