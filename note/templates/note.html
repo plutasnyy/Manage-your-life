@@ -2,15 +2,16 @@
 
 Notes:</br>
 {% for note in notes_list%}
-Title:  {{note.title}}</br>    
-Content: {{note.content}}</br></br>
+Title:  {{note.title}}</br>
+Content: {{note.content}}</br>
 
 
-<a href="{% url 'Note Update' note.id%}"><button type="submit">Edit</button></a>
+<a href="{% url 'Note Update' note.id%}"><button type="submit" style="float:left;">Edit</button></a>
 <form action="{% url 'Note Delete' note.id %}" method="POST">
   {% csrf_token %}
-  <button type="submit">Delete</button>
+  <button type="submit" style="float:left;">Delete</button>
 </form>
+</br></br>
 {% endfor %}
 
 Add:
