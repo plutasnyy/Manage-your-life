@@ -8,8 +8,9 @@ autor: {{note.created_by}}</br>
 data: {{note.created_on}}</br>
 tresc: {{note.content}}</br></br>
 
-<form action="{% url 'note_delete' note.id %}" method="POST">
 
+<a href="{% url 'Note Update' note.id%}"><button type="submit">Edit</button></a>
+<form action="{% url 'Note Delete' note.id %}" method="POST">
   {% csrf_token %}
   <button type="submit">Delete</button>
 </form>

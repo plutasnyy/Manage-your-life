@@ -33,4 +33,4 @@ class NoteUpdate(UpdateView):
     model = Note_model
     fields = ['title','content']
     template_name='note_form.html'
-    succes_url='/note'
+    success_url='/note'

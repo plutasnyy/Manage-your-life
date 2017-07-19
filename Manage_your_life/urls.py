@@ -35,8 +35,8 @@ urlpatterns = [
 #note
 urlpatterns+=[
 
-    url(r'^note_edit/(?P<pk>[0-9]+)$',note.views.NoteUpdate.as_view(),name='NoteUpdate'),
-    url(r'^note_delete/(?P<id>[0-9]+)$',note.views.note_delete,name='note_delete'),
+    url(r'^note/edit/(?P<pk>[0-9]+)$',note.views.NoteUpdate.as_view(),name='Note Update'),
+    url(r'^note/delete/(?P<id>[0-9]+)$',note.views.note_delete,name='Note Delete'),
     url(r'^note$',note.views.Homepage,name='Note Homepage'),
 ]
 
