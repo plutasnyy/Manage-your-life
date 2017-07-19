@@ -24,5 +24,13 @@ def Homepage(request):
 def note_delete(request,id):
     if request.method == 'POST':
         note=Note_model.objects.all().filter(id=id)
-        note.delete()        
+        note.delete()
     return HttpResponseRedirect('/note')
+
+from django.views.generic.edit import UpdateView
+
+class NoteUpdate(UpdateView):
+    model = Note_model
+    fields = ['title','content']
+    template_name='note_form.html'
+    succes_url='/note'
