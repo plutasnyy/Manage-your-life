@@ -16,7 +16,7 @@ class Item(models.Model):
     list=models.ForeignKey(List,null=True, blank=True)
     content=models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    executed=models.BooleanField()
+    executed=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return self.content
