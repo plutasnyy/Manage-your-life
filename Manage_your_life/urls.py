@@ -42,7 +42,7 @@ urlpatterns+=[
 
 #todo_list
 urlpatterns+=[
-    url(r'^todo_list$',todo_list.views.TodoList.as_view(),name='Todo_list Homepage'),
+    url(r'^todo_list$',todo_list.views.TodoList,name='Todo_list Homepage'),
     url(r'^todo_list/delete/(?P<id>[0-9]+)$',todo_list.views.TodoDelete.as_view(),name='TodoDelete'),
     url(r'^todo_list/edit/(?P<id>[0-9]+)$',todo_list.views.TodoEdit.as_view(),name='TodoEdit'),
 

@@ -1,11 +1,14 @@
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
 <h1>Lists:</h1>
 <ul>
-    {% for List in object_list %}
-    <li>{{ List.title }}
-      <a href="{% url 'TodoEdit' List.id %}">{{ List.id }}</a>
-      <a href="{% url 'TodoDelete' List.id %}">delete</a>
-    </li>
+    {% for List,Items in queryset.items %}
+      <li>{{ List.title }}:</br></br>
+        <ul>
+          {% for Item in Items %}
+          <li>{{Item.content}}</li></br>
+          {% endfor %}
+        </ul>
+      </li>
     {% endfor %}
 </ul>
 

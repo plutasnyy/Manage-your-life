@@ -5,10 +5,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from todo_list.models import List, Item
 
-class TodoList(ListView):
-    model = List
-    queryset=List.objects.all()
-    template_name='todo_list.html'
+def TodoList(request):
+    queryset={}
+    for i in List.objects.all():
+        queryset[i]=Item.objects.all().filter(list=i)
+
+    print(queryset)
+
+    return render(request,'todo_list.html',{'queryset':queryset})
 
 class TodoEdit(UpdateView):
     pass
