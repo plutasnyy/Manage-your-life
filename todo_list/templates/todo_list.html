@@ -1,2 +1,12 @@
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
-TODO!!
+<h1>Lists:</h1>
+<ul>
+    {% for List in object_list %}
+    <li>{{ List.title }}
+      <a href="{% url 'TodoEdit' List.id %}">{{ List.id }}</a>
+      <a href="{% url 'TodoDelete' List.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "TodoCreate" %}">New</a>
