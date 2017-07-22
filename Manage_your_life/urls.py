@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
 
 
@@ -22,7 +22,6 @@ from django.views.generic.base import TemplateView
 import main.views
 import note.views
 import calendar_app.views
-import todo_list.views
 
 #main
 urlpatterns = [
@@ -42,10 +41,7 @@ urlpatterns+=[
 
 #todo_list
 urlpatterns+=[
-    url(r'^todo_list$',todo_list.views.TodoList,name='Todo_list Homepage'),
-    url(r'^todo_list/delete/item/(?P<pk>[0-9]+)$',todo_list.views.TodoItemDelete.as_view(),name='Todo Item Delete'),
-    url(r'^todo_list/delete/list/(?P<pk>[0-9]+)$',todo_list.views.TodoListDelete.as_view(),name='Todo List Delete'),
-    url(r'^todo_list/edit/(?P<id>[0-9]+)$',todo_list.views.TodoEdit.as_view(),name='TodoEdit'),
+    url(r'^', include('todo_list.urls', namespace="todo_list")),
 ]
 
 #calendar_app

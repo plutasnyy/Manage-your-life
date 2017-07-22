@@ -6,7 +6,7 @@ class ListForm(forms.ModelForm):
         model=List
         exclude=('modified',)
         fields=['title']
-        
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model=Item

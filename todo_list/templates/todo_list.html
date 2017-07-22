@@ -21,7 +21,7 @@
     {% endfor %}
 
     {% csrf_token %}
-    <form action="post">
+    <form id="AddList" action="post">
       {% for field in ListForm %}
         <p>
           {{ field }}

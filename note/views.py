@@ -11,17 +11,16 @@ def homepage(request):
         user = request.user
         notes_list=Note_model.objects.all().filter(created_by=user)
         notes_list=sorted(notes_list,key=lambda x:x.created_on,reverse=True)
+        form = NoteForm(request.POST or None)
+        
+        if request.method == 'POST' and form.is_valid():
+            new_note=form.save(commit=False)
+            new_note.created_by=user
+            new_note.save()
+            return HttpResponseRedirect('/note')
 
-        if request.method == 'POST':
-            form = NoteForm(request.POST)
-            if form.is_valid():
-                new_note=form.save(commit=False)
-                new_note.created_by=user
-                new_note.save()
-                return HttpResponseRedirect('/note')
-        else:
-            form = NoteForm()
         return render(request,'note.html',{'notes_list':notes_list,'form':form})
+
     else:
         return HttpResponseRedirect('/')
 
