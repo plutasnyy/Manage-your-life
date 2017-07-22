@@ -16,8 +16,24 @@
           {% csrf_token %}
           <button type="submit">Delete List</button>
         </form>
+
       </li>
     {% endfor %}
-</ul>
 
-<a href="{% url "TodoCreate" %}">New</a>
+    {% csrf_token %}
+    <form action="post">
+      {% for field in ListForm %}
+        <p>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+      <button type="submit">Save List</button>
+    </form>
+
+</ul>
