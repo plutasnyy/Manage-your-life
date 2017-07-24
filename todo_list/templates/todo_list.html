@@ -6,13 +6,13 @@
         <ul>
           {% for Item in Items %}
           <li>{{Item.content}}</li></br>
-          <form action="{% url 'Todo Item Delete' Item.id %}" method="POST">
+          <form action="{% url 'todo_list:Todo Item Delete' Item.id %}" method="POST">
             {% csrf_token %}
             <button type="submit">Delete Item</button>
           </form>
           {% endfor %}
         </ul>
-        <form action="{% url 'Todo List Delete' List.id %}" method="POST">
+        <form action="{% url 'todo_list:Todo List Delete' List.id %}" method="POST">
           {% csrf_token %}
           <button type="submit">Delete List</button>
         </form>

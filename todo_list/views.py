@@ -40,8 +40,8 @@ class TodoEdit(UpdateView):
 
 class TodoItemDelete(DeleteView):
     model=Item_model
-    success_url = reverse_lazy('Todo_list Homepage')
+    success_url = reverse_lazy('todo_list:Todo Homepage')
 
 class TodoListDelete(DeleteView):
     model=List_model
-    success_url = reverse_lazy('Todo_list Homepage')
+    success_url = reverse_lazy('todo_list:Todo Homepage')

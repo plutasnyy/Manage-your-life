@@ -41,7 +41,7 @@ urlpatterns+=[
 
 #todo_list
 urlpatterns+=[
-    url(r'^', include('todo_list.urls', namespace="todo_list")),
+    url(r'^todo_list/', include('todo_list.urls',namespace='todo_list')),
 ]
 
 #calendar_app
