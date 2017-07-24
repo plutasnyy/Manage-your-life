@@ -24,14 +24,17 @@ def TodoList(request):
                 return HttpResponseRedirect('/todo_list')
         else:
             form=ListForm()
+            form2=ItemForm()
             return render(
                 request,'todo_list.html',{
                     'queryset':queryset,
                     'ListForm':form,
+                    'ItemForm:':form2,
                     }
                 )
     else:
         return HttpResponseRedirect('/')
+
 class TodoEdit(UpdateView):
     pass
 

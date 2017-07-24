@@ -4,6 +4,7 @@
     {% for List,Items in queryset.items %}
       <li>{{ List.title }}:</br></br>
         <ul>
+
           {% for Item in Items %}
           <li>{{Item.content}}</li></br>
           <form action="{% url 'todo_list:Todo Item Delete' Item.id %}" method="POST">
@@ -11,6 +12,12 @@
             <button type="submit">Delete Item</button>
           </form>
           {% endfor %}
+
+          <form action="AddItem" method="post">
+          {{ ItemForm.as_p }}
+            <button type="submit">Save Item</button>
+          </form>
+
         </ul>
         <form action="{% url 'todo_list:Todo List Delete' List.id %}" method="POST">
           {% csrf_token %}
@@ -21,7 +28,6 @@
     {% endfor %}
 
     <form action="AddList" method="post">
-
     {% csrf_token %}
       {% for field in ListForm %}
         <p>
