@@ -18,21 +18,18 @@ def TodoList(request):
         if request.method=='POST':
             form=ListForm(request.POST)
             if form.is_valid:
-                print("tu jestem:")
                 new_list=form.save(commit=False)
                 new_list.created_by=request.user
-                print("tu tez")
                 new_list.save()
-                print("a tu nei")
                 return HttpResponseRedirect('/todo_list')
         else:
             form=ListForm()
-        return render(
-            request,'todo_list.html',{
-                'queryset':queryset,
-                'ListForm':form,
-                }
-            )
+            return render(
+                request,'todo_list.html',{
+                    'queryset':queryset,
+                    'ListForm':form,
+                    }
+                )
     else:
         return HttpResponseRedirect('/')
 class TodoEdit(UpdateView):

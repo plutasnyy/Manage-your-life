@@ -20,8 +20,9 @@
       </li>
     {% endfor %}
 
+    <form action="AddList" method="post">
+
     {% csrf_token %}
-    <form id="AddList" action="post">
       {% for field in ListForm %}
         <p>
           {{ field }}
