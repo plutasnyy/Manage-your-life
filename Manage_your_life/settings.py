@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'todo_list',
     'note',
     'calendar_app',
-
 ]
 
 MIDDLEWARE = [
