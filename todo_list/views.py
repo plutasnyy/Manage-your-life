@@ -24,17 +24,17 @@ def TodoList(request):
                 new_list.created_by=request.user
                 new_list.save()
                 return HttpResponseRedirect('/todo_list')
+        else:
+            item_form=ItemForm()
+            list_form=ListForm()
 
-        item_form=ItemForm()
-        list_form=ListForm()
-
-        return render(
-            request,'todo_list.html',{
-                'queryset':queryset,
-                'ItemForm:':item_form,
-                'ListForm':list_form,
-                }   
-            )
+            return render(
+                request,'todo_list.html',{
+                    'queryset':queryset,
+                    'ItemForm:':item_form,
+                    'ListForm':list_form,
+                    }
+                )
 
 
 class TodoEdit(UpdateView):
