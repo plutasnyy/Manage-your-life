@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.template.loader import render_to_string
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
@@ -22,6 +23,12 @@ def TodoList(request):
                 'queryset':queryset,
                 }
             )
+
+def list_create(request):
+    form=ListForm()
+    context={'form':form}
+    html_form=render_to_string('todo_list_add_list.html',context,request=request)
+    return JsonResponse({'html_form':html_form})
 
 class TodoEdit(UpdateView):
     pass
