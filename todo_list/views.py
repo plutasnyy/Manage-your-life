@@ -17,25 +17,11 @@ def TodoList(request):
         for i in List_model.objects.all():
             queryset[i]=Item_model.objects.all().filter(list=i)
 
-        if request.method=='POST':
-            form=ListForm(request.POST)
-            if form.is_valid:
-                new_list=form.save(commit=False)
-                new_list.created_by=request.user
-                new_list.save()
-                return HttpResponseRedirect('/todo_list')
-        else:
-            item_form=ItemForm()
-            list_form=ListForm()
-
-            return render(
-                request,'todo_list.html',{
-                    'queryset':queryset,
-                    'ItemForm:':item_form,
-                    'ListForm':list_form,
-                    }
-                )
-
+        return render(
+            request,'todo_list.html',{
+                'queryset':queryset,
+                }
+            )
 
 class TodoEdit(UpdateView):
     pass

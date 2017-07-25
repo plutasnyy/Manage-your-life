@@ -7,5 +7,8 @@ class ListForm(forms.ModelForm):
         exclude=('modified',)
         fields=['title']
 
-class ItemForm(forms.Form):
-    Field=forms.CharField()
+class ItemForm(forms.ModelForm):
+    class Meta:
+        model=Item
+        exclude=('modified',)
+        fields=['content']
