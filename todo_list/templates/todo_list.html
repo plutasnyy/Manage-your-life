@@ -1,4 +1,5 @@
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
+{{ ItemForm }}
 <h1>Lists:</h1>
 <ul>
     {% for List,Items in queryset.items %}
@@ -13,11 +14,6 @@
           </form>
           {% endfor %}
 
-          <form action="AddItem" method="post">
-          {{ ItemForm.as_p }}
-            <button type="submit">Save Item</button>
-          </form>
-
         </ul>
         <form action="{% url 'todo_list:Todo List Delete' List.id %}" method="POST">
           {% csrf_token %}
@@ -27,19 +23,36 @@
       </li>
     {% endfor %}
 
-    <form action="AddList" method="post">
+    <form method="post">
     {% csrf_token %}
-      {% for field in ListForm %}
-        <p>
-          {{ field }}
-          {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text }}</small>
-          {% endif %}
-          {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
+          {% for field in ItemForm %}
+            <p>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
           {% endfor %}
-        </p>
-      {% endfor %}
+      <button type="submit">Save List</button>
+    </form>
+
+
+    <form method="post">
+    {% csrf_token %}
+          {% for field in ListForm %}
+            <p>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
       <button type="submit">Save List</button>
     </form>
 

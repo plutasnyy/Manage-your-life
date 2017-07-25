@@ -11,4 +11,3 @@ class ItemForm(forms.ModelForm):
     class Meta:
         model=Item
         exclude=('modified',)
-        fields=['content']

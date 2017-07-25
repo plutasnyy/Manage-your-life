@@ -14,7 +14,7 @@ class List(models.Model):
 class Item(models.Model):
     id=models.AutoField(primary_key=True)
     list=models.ForeignKey(List,null=True, blank=True)
-    content=models.TextField(null=True, blank=True)
+    content=models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     executed=models.BooleanField(default=False)
 

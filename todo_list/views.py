@@ -10,7 +10,9 @@ from todo_list.models import Item as Item_model
 from todo_list.forms import ListForm, ItemForm
 
 def TodoList(request):
-    if request.user.is_authenticated():
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+    else:
         queryset={}
         for i in List_model.objects.all():
             queryset[i]=Item_model.objects.all().filter(list=i)
@@ -22,18 +24,18 @@ def TodoList(request):
                 new_list.created_by=request.user
                 new_list.save()
                 return HttpResponseRedirect('/todo_list')
-        else:
-            form=ListForm()
-            form2=ItemForm()
-            return render(
-                request,'todo_list.html',{
-                    'queryset':queryset,
-                    'ListForm':form,
-                    'ItemForm:':form2,
-                    }
-                )
-    else:
-        return HttpResponseRedirect('/')
+
+        item_form=ItemForm()
+        list_form=ListForm()
+
+        return render(
+            request,'todo_list.html',{
+                'queryset':queryset,
+                'ItemForm:':item_form,
+                'ListForm':list_form,
+                }   
+            )
+
 
 class TodoEdit(UpdateView):
     pass
