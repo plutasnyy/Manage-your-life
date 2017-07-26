@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block javascript %}
+<script src="{% static 'todo_list/js/main.js'%}"></script>
+{% endblock%}
+
 {% block content %}
   <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
 
@@ -10,38 +15,12 @@
   </button>
   </p>
 </br>
-  <h1>Lists:</h1>
-  <ul>
-    {% for List,Items in queryset.items %}
-      <li>{{ List.title }}:</br></br>
-        <ul>
-
-          {% for Item in Items %}
-          <li>{{Item.content}}</li></br>
-          <form action="{% url 'todo_list:Todo Item Delete' Item.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">Delete Item</button>
-          </form>
-          {% endfor %}
-
-        </ul>
-        <form action="{% url 'todo_list:Todo List Delete' List.id %}" method="POST">
-          {% csrf_token %}
-          <button type="submit">Delete List</button>
-        </form>
-
-      </li>
-    {% endfor %}
-  </ul>
-
+{% include 'todo_list_list.html' %}
   <div class="modal fade" id="modal-add_list">
     <div class="modal-dialog">
       <div class="modal-content">
+        awdaw
       </div>
     </div>
   </div>
 {% endblock %}
-
-{% block javascript %}
-<script src="{% static 'todo_list/js/main.js'%}"></script>
-{% endblock%}

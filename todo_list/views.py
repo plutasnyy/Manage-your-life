@@ -25,7 +25,28 @@ def TodoList(request):
             )
 
 def list_create(request):
-    return render(request,'todo_list_add_list.html',{'form':form})
+    data = dict()
+
+    if request.method == 'POST':
+        form = ListForm(request.POST)
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+            Lists = List.objects.all()
+            data['html_list_list'] = render_to_string('todo_list_list.html', {
+                'queryset': Lists,
+            })
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ListForm()
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_add_list.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
 
 
 class TodoEdit(UpdateView):
