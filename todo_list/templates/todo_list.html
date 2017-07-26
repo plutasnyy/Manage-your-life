@@ -1,34 +1,6 @@
+{% extends 'base.html' %}
 
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-  crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-  integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-  crossorigin="anonymous"></script>
-  <script>
-  $(function () {
-    $(".js-create-list").click(function () {
-      $.ajax({
-        url: '/todo_list/list/create/',
-        type: 'get',
-        dataType: 'json',
-        beforeSend: function () {
-          $("#modal-add_list").modal("show");
-          console.log("lool");
-        },
-        success: function (data) {
-          $("#modal-book .modal-content").html(data.html_form);
-        }
-      });
-    });
-  });
-  </script>
-</head>
-
-
-<body>
+{% block content %}
   <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
 
   <p>
@@ -37,7 +9,6 @@
     New List
   </button>
   </p>
-
 
   {{ ItemForm }}
   <h1>Lists:</h1>
@@ -64,4 +35,14 @@
     {% endfor %}
   </ul>
 
-</body>
+  <div class="modal fade" id="modal-add_list">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="static/todo_list/js/main.js"></script>
+{% endblock%}

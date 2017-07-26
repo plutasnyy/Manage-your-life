@@ -25,10 +25,8 @@ def TodoList(request):
             )
 
 def list_create(request):
-    form=ListForm()
-    context={'form':form}
-    html_form=render_to_string('todo_list_add_list.html',context,request=request)
-    return JsonResponse({'html_form':html_form})
+    return render(request,'todo_list_add_list.html',{'form':form})
+
 
 class TodoEdit(UpdateView):
     pass

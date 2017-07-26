@@ -1,98 +1,69 @@
-<!DOCTYPE html>
-<html lang="pl_PL">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base.html' %}
 
-    <title>Manage Your Life!</title>
+{% block content %}
+<div class="row">
+  <footer>
+      {% if user.is_authenticated %}
+        <p_button>
+          Hello {{user.username}}
+        </p_button>
+        <a href="{% url 'Logout' %}"><button class="login_button" style=float:right;>Logout</button></a>
 
-    <link rel="stylesheet" type="text/css" href="static/main_style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-    crossorigin="anonymous">
-  </head>
+      {%else%}
+          <form method="post">
+            {% if form.errors %}
+            <pe>Your username and password didn't match. Please try again.</pe>
+            {% endif %}
+            {% csrf_token %}
+          {{form}}
+            <button class="login_button" type="submit" style="float:right;"><p_button>
+              Sign In
+            </p_button></button>
+          </form>
+        <a href="{% url 'Registration' %}">  <button class="login_button"><p_button>
+          Sing Up
+        </p_button></button></a>
 
-  <body>
+      {%endif%}
+  </footer>
+</div>
 
-    <div class="container">
+<div class="row">
+  <header>
 
-      <div class="row">
+  </header>
+</div>
 
-        <footer>
-
-            {% if user.is_authenticated %}
-              <p_button>
-                Hello {{user.username}}
-              </p_button>
-              <a href="{% url 'Logout' %}"><button class="login_button" style=float:right;>Logout</button></a>
-
-            {%else%}
-                <form method="post">
-                  {% if form.errors %}
-                  <pe>Your username and password didn't match. Please try again.</pe>
-                  {% endif %}
-                  {% csrf_token %}
-                {{form}}
-                  <button class="login_button" type="submit" style="float:right;"><p_button>
-                    Sign In
-                  </p_button></button>
-                </form>
-              <a href="{% url 'Registration' %}">  <button class="login_button"><p_button>
-                Sing Up
-              </p_button></button></a>
-
-            {%endif%}
-
-        </footer>
-      </div>
-
-      <div class="row">
-        <header>
-
-        </header>
-      </div>
-
-      <div class="row" style="padding-top:15px;">
-        <a href="{% url 'Calendar Homepage' %}">
-            <div class="col-md-4 col-xs-12 link_box">
-            <h5>
-              Calendar
-            </h5>
-          </div>
-        </a>
-        <a href="{% url 'todo_list:Todo Homepage' %}">
-          <div class="col-md-4 col-xs-12 link_box">
-            <h5>
-              Todo list
-            </h5>
-          </div>
-          </a>
-        <a href="{% url 'Note Homepage' %}">
-          <div class="col-md-4 col-xs-12 link_box">
-            <h5>
-              Note
-            </h5>
-            </div>
-          </a>
-      </div>
-      <div class="row">
-        <header>
-          <p2>
-            Nadchodzące wydarzenia - > puste gdy niezalogowany
-          </p2>
-        </header>
-      </div>
-
-      <div class="row"> <br> Wiecej rzeczy i jakas stopka pewnie </div>
-
+<div class="row" style="padding-top:15px;">
+  <a href="{% url 'Calendar Homepage' %}">
+      <div class="col-md-4 col-xs-12 link_box">
+      <h5>
+        Calendar
+      </h5>
     </div>
+  </a>
+  <a href="{% url 'todo_list:Todo Homepage' %}">
+    <div class="col-md-4 col-xs-12 link_box">
+      <h5>
+        Todo list
+      </h5>
+    </div>
+    </a>
+  <a href="{% url 'Note Homepage' %}">
+    <div class="col-md-4 col-xs-12 link_box">
+      <h5>
+        Note
+      </h5>
+      </div>
+    </a>
+</div>
+<div class="row">
+  <header>
+    <p2>
+      Nadchodzące wydarzenia - > puste gdy niezalogowany
+    </p2>
+  </header>
+</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-    crossorigin="anonymous"></script>
-
-  </body>
-
-</html>
+<div class="row"> <br> Wiecej rzeczy i jakas stopka pewnie </div>
+{% endblock %}

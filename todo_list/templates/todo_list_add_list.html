@@ -1,6 +1,6 @@
-<div class="modal fade" id="modal-add_list">
-  <div class="modal-dialog">
-    <div class="modal-content">
+{% extends 'base.html' %}
+
+{% block content %}
 
 <form method="post" action="{% url 'todo_list:Todo List Create' %}" class="js-list-create-form">
   {% csrf_token %}
@@ -19,6 +19,4 @@
   </div>
 </form>
 
-</div>
-</div>
-</div>
+{% endblock%}

@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br></br>
 
 Notes:</br>
@@ -14,20 +17,13 @@ Content: {{note.content}}</br>
 </br></br>
 {% endfor %}
 
-Add:
+Add:</br>
 {% csrf_token %}
 <form method="post">
   {% csrf_token %}
-  {% for field in form %}
-    <p>
-      {{ field }}
-      {% if field.help_text %}
-        <small style="color: grey">{{ field.help_text }}</small>
-      {% endif %}
-      {% for error in field.errors %}
-        <p style="color: red">{{ error }}</p>
-      {% endfor %}
-    </p>
+  {% for field in form%}
+  {{field}} </br>
   {% endfor %}
   <button type="submit">Zapisz</button>
 </form>
+{% endblock %}
