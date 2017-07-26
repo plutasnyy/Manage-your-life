@@ -18,11 +18,9 @@ def TodoList(request):
         for i in List_model.objects.all():
             queryset[i]=Item_model.objects.all().filter(list=i)
 
-        form=ListForm()
         return render(
             request,'todo_list.html',{
                 'queryset':queryset,
-                'form':form,
                 }
             )
 
