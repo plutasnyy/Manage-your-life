@@ -8,7 +8,7 @@ $(function () {
         $("#modal-add_list").modal("show");
       },
       success: function (data) {
-        $("#modal-add_list .modal-content").html(data.html_form);
+        $("#modal-add_list .modal-content").html(data.html_form).hide();
       }
     });
   });

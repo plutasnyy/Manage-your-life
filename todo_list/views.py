@@ -30,9 +30,11 @@ def list_create(request):
     if request.method == 'POST':
         form = ListForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_list=form.save(commit=False)
+            new_list.created_by=request.user
+            new_list.save()
             data['form_is_valid'] = True
-            Lists = List.objects.all()
+            Lists = List_model.objects.all()
             data['html_list_list'] = render_to_string('todo_list_list.html', {
                 'queryset': Lists,
             })
@@ -47,7 +49,6 @@ def list_create(request):
         request=request
     )
     return JsonResponse(data)
-
 
 class TodoEdit(UpdateView):
     pass
