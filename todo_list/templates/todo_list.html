@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
   <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
 
@@ -9,8 +9,7 @@
     New List
   </button>
   </p>
-
-  {{ ItemForm }}
+</br>
   <h1>Lists:</h1>
   <ul>
     {% for List,Items in queryset.items %}
@@ -44,5 +43,5 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="static/todo_list/js/main.js"></script>
+<script src="{% static 'todo_list/js/main.js'%}"></script>
 {% endblock%}
