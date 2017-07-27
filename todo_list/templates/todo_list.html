@@ -6,23 +6,24 @@
 {% endblock%}
 
 {% block content %}
-  <a href="{% url 'Homepage' %}">Wroc do strony głównej</a></br>
+<a href="{% url 'Homepage' %}">Homepage</a></br></br>
 
-  <p>
-  <button type="button" class="btn btn-primary js-create-list" data-url="{% url 'todo_list:Todo List Create' %}">
-    <span class="glyphicon glyphicon-plus"></span>
-    New List
-  </button>
-  </p>
+<button type="button" class="btn btn-primary js-create-list" data-url="{% url 'todo_list:Todo List Create' %}">
+  <span class="glyphicon glyphicon-plus"></span>
+  New List
+</button>
+
 </br>
-{% include 'todo_list_list.html' %}
+<div id="Todo List">
+  {% include 'todo_list_list.html' %}
+</div>
 <div class="modal fade" id="modal-add_list">
   <div class="modal-dialog">
     <div class="modal-content">
       awdaw
 
-      </div>
-      </div>
-      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

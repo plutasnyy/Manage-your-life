@@ -37,7 +37,7 @@ def list_create(request):
             Lists = List_model.objects.all()
             data['html_list_list'] = render_to_string('todo_list_list.html', {
                 'queryset': Lists,
-            })
+            }, request=request)
         else:
             data['form_is_valid'] = False
     else:

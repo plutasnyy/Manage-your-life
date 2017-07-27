@@ -1,35 +1,40 @@
 $(function () {
-  $(".js-create-list").click(function () {
+  var loadForm =  function () {
+    var btn = $(this);
     $.ajax({
-      url: '/todo_list/list/create/',
-      type: 'get',
-      dataType: 'json',
+      url: btn.attr("data-url"),
+      type: "get",
+      dataType: "json",
       beforeSend: function () {
         $("#modal-add_list").modal("show");
       },
       success: function (data) {
-        $("#modal-add_list .modal-content").html(data.html_form).hide();
-      }
-    });
-  });
-});
-
-$("#modal-book").on("submit", ".js-list-create-form", function () {
-  var form = $(this);
-  $.ajax({
-    url: form.attr("action"),
-    data: form.serialize(),
-    type: form.attr("method"),
-    dataType: 'json',
-    success: function (data) {
-      if (data.form_is_valid) {
-        //$("#book-table tbody").html(data.html_book_list);  // <-- Replace the table body
-        $("#modal-book").modal("hide");  // <-- Close the modal
-      }
-      else {
         $("#modal-add_list .modal-content").html(data.html_form);
       }
-    }
-  });
-  return false;
+    });
+  };
+
+  var saveForm = function () {
+    var form = $(this);
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#Todo List").html(data.html_form);  // <-- Replace the table body
+          $("#modal-add_list").modal("hide");  // <-- Close the modal
+        }
+        else {
+          $("#modal-add_list .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+  };
+
+$(".js-create-list").click(loadForm);
+$("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
+
 });
