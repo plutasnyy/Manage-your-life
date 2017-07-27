@@ -23,7 +23,7 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#Todo List").html(data.html_form);  // <-- Replace the table body
+          $("#Todo-List").html(data.queryset);  // <-- Replace the table body
           $("#modal-add_list").modal("hide");  // <-- Close the modal
         }
         else {

@@ -10,11 +10,12 @@ from todo_list.models import Item as Item_model
 
 from todo_list.forms import ListForm, ItemForm
 
+
 def TodoList(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
     else:
-        queryset={}
+        queryset=dict()
         for i in List_model.objects.all():
             queryset[i]=Item_model.objects.all().filter(list=i)
 
@@ -34,10 +35,14 @@ def list_create(request):
             new_list.created_by=request.user
             new_list.save()
             data['form_is_valid'] = True
-            Lists = List_model.objects.all()
-            data['html_list_list'] = render_to_string('todo_list_list.html', {
-                'queryset': Lists,
-            }, request=request)
+
+            queryset={}
+            for i in List_model.objects.all():
+                queryset[i]=Item_model.objects.all().filter(list=i)
+
+            data['queryset'] = render_to_string('todo_list_list.html', {
+                'queryset': queryset,
+            })
         else:
             data['form_is_valid'] = False
     else:

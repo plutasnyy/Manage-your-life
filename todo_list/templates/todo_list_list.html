@@ -10,21 +10,16 @@
         <button type="submit" style="float:left;margin-left:50px" class="btn btn-danger btn-xs">  <span class="glyphicon glyphicon-remove "></span></button>
       </form>
     </br></br>
-
       <ul class="ItemList">
-
         {% for Item in Items %}
         <li><h5 style="float:left;">{{Item.content}}</h5>
         <form action="{% url 'todo_list:Todo Item Delete' Item.id %}" method="POST">
           {% csrf_token %}
           <button type="submit" style="float:left;margin-left:50px" class="btn btn-danger btn-xs">  <span class="glyphicon glyphicon-remove"></span></button>
         </form>
-      </li></br>
+        </li></br>
         {% endfor %}
-
       </ul>
-
-
     </li></br>
   {% endfor %}
 </ul>
