@@ -23,8 +23,8 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#Todo-List").html(data.queryset);  // <-- Replace the table body
-          $("#modal-add_list").modal("hide");  // <-- Close the modal
+          $("#Todo-List").html(data.queryset);
+          $("#modal-add_list").modal("hide");
         }
         else {
           $("#modal-add_list .modal-content").html(data.html_form);
@@ -34,28 +34,6 @@ $(function () {
     return false;
   };
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-var csrf=function(){
-  var old_token=getCookie("csrftoken");
-  console.log(old_token);
-  console.log($("input"));
-};
-
 $(".js-create-list").click(loadForm);
 $("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
-$(".js-log").click(csrf);
 });
