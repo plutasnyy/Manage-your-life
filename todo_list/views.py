@@ -10,6 +10,7 @@ from todo_list.models import Item as Item_model
 
 from todo_list.forms import ListForm, ItemForm
 
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 def TodoList(request):
     if not request.user.is_authenticated():
@@ -25,6 +26,7 @@ def TodoList(request):
                 }
             )
 
+@ensure_csrf_cookie
 def list_create(request):
     data = dict()
 
