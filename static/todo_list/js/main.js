@@ -1,4 +1,4 @@
-$(function () {
+  $(function () {
   var loadForm =  function () {
     var btn = $(this);
     $.ajax({
@@ -25,6 +25,7 @@ $(function () {
         if (data.form_is_valid) {
           $("#Todo-List").html(data.queryset);
           $("#modal-add_list").modal("hide");
+          window.location.reload();
         }
         else {
           $("#modal-add_list .modal-content").html(data.html_form);
