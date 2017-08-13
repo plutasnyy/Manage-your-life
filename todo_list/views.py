@@ -58,10 +58,11 @@ def list_create(request):
     )
     return JsonResponse(data)
 
-def item_create(request,pk):
+def item_create(request):
     data = dict()
 
     if request.method == 'POST':
+        print(request.POST)
         form = ItemForm(request.POST)
         if form.is_valid():
             new_item=form.save(commit=False)

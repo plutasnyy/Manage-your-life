@@ -21,7 +21,7 @@
         </form>
       </li></br>
         {% endfor %}
-      <button type="button" class="btn btn-primary js-create-item" data-url="{% url 'todo_list:Todo Item Create' List.id %}">
+      <button type="button" class="btn btn-primary js-create-item" data-url="{% url 'todo_list:Todo Item Create' %}" list-id="{{ List.id }}">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
       </ul>
