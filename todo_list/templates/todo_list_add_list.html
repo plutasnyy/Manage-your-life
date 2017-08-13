@@ -1,5 +1,5 @@
 <div class="container">
-   <form method="post" action="{% url 'todo_list:Todo List Create' %}" class="js-list-create-form">
+   <form method="post" action="{% url 'todo_list:Todo Item Create' List.id %}" class="js-list-create-form">
     {% csrf_token %}
     <div class="modal-header">
       <h4 class="modal-title">Create a new List</h4>

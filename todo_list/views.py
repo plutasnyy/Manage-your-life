@@ -12,13 +12,17 @@ from todo_list.forms import ListForm, ItemForm
 
 from django.views.decorators.csrf import ensure_csrf_cookie
 
+def get_queryset():
+    queryset=dict()
+    for i in List_model.objects.all():
+        queryset[i]=Item_model.objects.all().filter(list=i)
+    return queryset
+
 def TodoList(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
     else:
-        queryset=dict()
-        for i in List_model.objects.all():
-            queryset[i]=Item_model.objects.all().filter(list=i)
+        queryset=get_queryset()
 
         return render(
             request,'todo_list.html',{
@@ -26,7 +30,6 @@ def TodoList(request):
                 }
             )
 
-@ensure_csrf_cookie
 def list_create(request):
     data = dict()
 
@@ -38,9 +41,7 @@ def list_create(request):
             new_list.save()
             data['form_is_valid'] = True
 
-            queryset={}
-            for i in List_model.objects.all():
-                queryset[i]=Item_model.objects.all().filter(list=i)
+            queryset=get_queryset()
 
             data['queryset'] = render_to_string('todo_list_list.html', {
                 'queryset': queryset,
@@ -49,6 +50,34 @@ def list_create(request):
             data['form_is_valid'] = False
     else:
         form = ListForm()
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_add_list.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
+
+def item_create(request,pk):
+    data = dict()
+
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            new_item=form.save(commit=False)
+            new_item.created_by=request.user
+            new_item.save()
+            data['form_is_valid'] = True
+
+            queryset=get_queryset()
+
+            data['queryset'] = render_to_string('todo_list_list.html', {
+                'queryset': queryset,
+            })
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ItemForm()
 
     context = {'form': form}
     data['html_form'] = render_to_string('todo_list_add_list.html',
