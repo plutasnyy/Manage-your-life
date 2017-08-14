@@ -1,5 +1,8 @@
   $(function () {
+    var global_url;//THIS IS VEEERY BAD
+
     var loadForm=function(){
+    global_url=$(this).attr("data-url");
     var btn = $(this);
     $.ajax({
       url: btn.attr("data-url"),
@@ -16,6 +19,7 @@
 
   var saveForm = function () {
     var form = $(this);
+    form.attr("action",global_url);
     $.ajax({
       url: form.attr("action"),
       data: form.serialize(),
@@ -35,16 +39,8 @@
     return false;
   };
 
-  function changeUrl(){
-    var url=$(this).attr("data-url");
-    alert(url);
-    $(".js-list-create-form").attr("action",url);
-  }
-
 $(".js-create-list").click(loadForm);
 $("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 
 $(".js-create-item").on("click",loadForm);
-$(".js-create-item").on("click",changeUrl);
-$("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 });
