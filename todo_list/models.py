@@ -13,7 +13,7 @@ class List(models.Model):
 
 class Item(models.Model):
     id=models.AutoField(primary_key=True)
-    list=models.ForeignKey(List,null=True, blank=True)
+    list=models.ForeignKey(List)
     content=models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     executed=models.BooleanField(default=False)

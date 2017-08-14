@@ -12,7 +12,6 @@
     </br></br>
 
       <ul class="ItemList">
-
         {% for Item in Items %}
         <li><h5 style="float:left;">{{Item.content}}</h5>
         <form action="{% url 'todo_list:Todo Item Delete' Item.id %}" method="POST">
@@ -21,11 +20,10 @@
         </form>
       </li></br>
         {% endfor %}
-      <button type="button" class="btn btn-primary js-create-item" data-url="{% url 'todo_list:Todo Item Create' %}" list-id="{{ List.id }}">
+      <button type="button" class="btn btn-primary js-create-item" data-url ="{% url 'todo_list:Todo Item Create' List.id %}" >
         <span class="glyphicon glyphicon-plus"></span>
       </button>
       </ul>
-
 
     </li></br>
   {% endfor %}

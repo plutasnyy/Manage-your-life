@@ -58,15 +58,15 @@ def list_create(request):
     )
     return JsonResponse(data)
 
-def item_create(request):
+def item_create(request,pk):
     data = dict()
-
     if request.method == 'POST':
-        print(request.POST)
         form = ItemForm(request.POST)
         if form.is_valid():
             new_item=form.save(commit=False)
-            new_item.created_by=request.user
+            List=List_model.objects.all().filter(id=pk)
+            print("AAAAAAAAAAAALista",List,"typ",type(List),"typ new_iem",type(new_item.list))
+
             new_item.save()
             data['form_is_valid'] = True
 
@@ -87,8 +87,6 @@ def item_create(request):
     )
     return JsonResponse(data)
 
-class TodoEdit(UpdateView):
-    pass
 
 class TodoItemDelete(DeleteView):
     model=Item_model

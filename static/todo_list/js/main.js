@@ -1,5 +1,5 @@
   $(function () {
-  var loadForm =  function () {
+    var loadForm=function(){
     var btn = $(this);
     $.ajax({
       url: btn.attr("data-url"),
@@ -35,9 +35,16 @@
     return false;
   };
 
+  function changeUrl(){
+    var url=$(this).attr("data-url");
+    alert(url);
+    $(".js-list-create-form").attr("action",url);
+  }
+
 $(".js-create-list").click(loadForm);
 $("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 
-$(".js-create-item").click(loadForm);
+$(".js-create-item").on("click",loadForm);
+$(".js-create-item").on("click",changeUrl);
 $("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 });
