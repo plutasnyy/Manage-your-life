@@ -64,9 +64,9 @@ def item_create(request,pk):
         form = ItemForm(request.POST)
         if form.is_valid():
             new_item=form.save(commit=False)
-            List=List_model.objects.all().filter(id=pk)
-            print("AAAAAAAAAAAALista",List,"typ",type(List),"typ new_iem",type(new_item.list))
 
+            queryset=List_model.objects.all().filter(id=pk)
+            new_item.list=queryset[0]
             new_item.save()
             data['form_is_valid'] = True
 
