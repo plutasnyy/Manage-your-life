@@ -30,9 +30,21 @@ def TodoList(request):
                 }
             )
 
+def json_response(form,data,request):
+    queryset=get_queryset()
+    data['queryset'] = render_to_string('todo_list_list.html', {
+        'queryset': queryset,
+    })
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_add_list.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
+
 def list_create(request):
     data = dict()
-
     if request.method == 'POST':
         form = ListForm(request.POST)
         if form.is_valid():
@@ -41,22 +53,12 @@ def list_create(request):
             new_list.save()
             data['form_is_valid'] = True
 
-            queryset=get_queryset()
-
-            data['queryset'] = render_to_string('todo_list_list.html', {
-                'queryset': queryset,
-            })
         else:
             data['form_is_valid'] = False
     else:
         form = ListForm()
 
-    context = {'form': form}
-    data['html_form'] = render_to_string('todo_list_add_list.html',
-        context,
-        request=request
-    )
-    return JsonResponse(data)
+    return json_response(form,data,request)
 
 def item_create(request,pk):
     data = dict()
@@ -70,23 +72,12 @@ def item_create(request,pk):
             new_item.save()
             data['form_is_valid'] = True
 
-            queryset=get_queryset()
-
-            data['queryset'] = render_to_string('todo_list_list.html', {
-                'queryset': queryset,
-            })
         else:
             data['form_is_valid'] = False
     else:
         form = ItemForm()
 
-    context = {'form': form}
-    data['html_form'] = render_to_string('todo_list_add_list.html',
-        context,
-        request=request
-    )
-    return JsonResponse(data)
-
+    return json_response(form,data,request)
 
 class TodoItemDelete(DeleteView):
     model=Item_model
