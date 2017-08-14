@@ -1,7 +1,7 @@
-  $(function () {
-    var global_url;//THIS IS VEEERY BAD
+$(function () {
+  var global_url;//THIS IS VEEERY BAD
 
-    var loadForm=function(){
+  var loadForm=function(){
     global_url=$(this).attr("data-url");
     var btn = $(this);
     $.ajax({
@@ -17,27 +17,27 @@
     });
   };
 
-  var saveForm = function () {
+var saveForm = function () {
     var form = $(this);
-    form.attr("action",global_url);
-    $.ajax({
-      url: form.attr("action"),
-      data: form.serialize(),
-      type: form.attr("method"),
-      dataType: 'json',
-      success: function (data) {
-        if (data.form_is_valid) {
-          $("#Todo-List").html(data.queryset);
-          $("#modal-add_list").modal("hide");
-          window.location.reload();
-        }
-        else {
-          $("#modal-add_list .modal-content").html(data.html_form);
-        }
+  form.attr("action",global_url);
+  $.ajax({
+    url: form.attr("action"),
+    data: form.serialize(),
+    type: form.attr("method"),
+    dataType: 'json',
+    success: function (data) {
+      if (data.form_is_valid) {
+        $("#Todo-List").html(data.queryset);
+        $("#modal-add_list").modal("hide");
+        window.location.reload();
       }
-    });
-    return false;
-  };
+      else {
+        $("#modal-add_list .modal-content").html(data.html_form);
+      }
+    }
+  });
+  return false;
+};
 
 $(".js-create-list").click(loadForm);
 $(".js-create-item").click(loadForm);
