@@ -2,14 +2,14 @@
    <form method="post" data-url="{% url 'todo_list:Todo List Create' %}" action="{% url 'todo_list:Todo List Create' %}" class="js-list-create-form">
     {% csrf_token %}
     <div class="modal-header">
-      <h4 class="modal-title">Create a new List</h4>
+      <h4 class="modal-title">Create a new Item</h4>
     </div>
     <div class="modal-body">
       {% include 'todo_list_form.html' %}
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-primary">Create List</button>
+      <button type="submit" class="btn btn-primary">Create Item</button>
     </div>
   </form>
 </div>
