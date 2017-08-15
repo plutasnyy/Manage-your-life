@@ -41,6 +41,9 @@ var saveForm = function () {
 
 $(".js-create-list").click(loadForm);
 $(".js-create-item").click(loadForm);
-$("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 
+$(".js-edit-list").click(loadForm);
+$(".js-edit-item").click(loadForm);
+
+$("#modal-add_list").on("submit", ".js-list-create-form", saveForm);
 });

@@ -9,6 +9,9 @@
         {% csrf_token %}
         <button type="submit" style="float:left;margin-left:50px" class="btn btn-danger btn-xs">  <span class="glyphicon glyphicon-remove "></span></button>
       </form>
+      <button type="button" class="btn btn-primary js-edit-list" data-url ="{% url 'todo_list:Todo List Edit' List.id %}" >
+        <span class="glyphicon glyphicon-edit btn-xs"></span>
+      </button>
     </br></br>
 
       <ul class="ItemList">
@@ -18,6 +21,9 @@
           {% csrf_token %}
           <button type="submit" style="float:left;margin-left:50px" class="btn btn-danger btn-xs">  <span class="glyphicon glyphicon-remove"></span></button>
         </form>
+        <button type="button" class="btn btn-primary js-edit-item" data-url ="{% url 'todo_list:Todo Item Edit' Item.id %}" >
+          <span class="glyphicon glyphicon-edit btn-xs"></span>
+        </button>
       </li></br>
         {% endfor %}
       <button type="button" class="btn btn-primary js-create-item" data-url ="{% url 'todo_list:Todo Item Create' List.id %}" >

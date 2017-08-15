@@ -1,0 +1,15 @@
+<div class="container">
+   <form method="post" action="{% url 'todo_list:Todo Item Edit' form.instance.pk %}" class="js-list-create-form">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Item</h4>
+    </div>
+    <div class="modal-body">
+      {% include 'todo_list_form.html' %}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-primary">Edit Item</button>
+    </div>
+  </form>
+</div>

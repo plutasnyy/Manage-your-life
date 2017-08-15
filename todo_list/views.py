@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView,ListView
@@ -29,6 +29,8 @@ def TodoList(request):
                 'queryset':queryset,
                 }
             )
+
+#THIS WILL BE REPAIRED :D
 
 def list_create(request):
     data = dict()
@@ -81,6 +83,87 @@ def item_create(request,pk):
 
     context = {'form': form}
     data['html_form'] = render_to_string('todo_list_add_item.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
+
+def item_create(request,pk):
+    data = dict()
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            new_item=form.save(commit=False)
+
+            queryset=List_model.objects.all().filter(id=pk)
+            new_item.list=queryset[0]
+            new_item.save()
+            data['form_is_valid'] = True
+
+            queryset=get_queryset()
+            data['queryset'] = render_to_string('todo_list_list.html', {
+                'queryset': queryset,
+            })
+
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ItemForm()
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_add_item.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
+
+def list_edit(request,pk):
+    data=dict()
+    List=get_object_or_404(List_model,id=pk)
+    if request.method == 'POST':
+        form = ListForm(request.POST, instance=List)
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+
+            queryset=get_queryset()
+            data['queryset'] = render_to_string('todo_list_list.html', {
+                'queryset': queryset,
+            })
+
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ListForm(instance=List)
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_edit_list.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)
+
+def item_edit(request,pk):
+    data=dict()
+    Item=get_object_or_404(Item_model,id=pk)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, instance=Item)
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+
+            queryset=get_queryset()
+            data['queryset'] = render_to_string('todo_list_list.html', {
+                'queryset': queryset,
+            })
+
+        else:
+            data['form_is_valid'] = False
+    else:
+        form = ItemForm(instance=Item)
+
+    context = {'form': form}
+    data['html_form'] = render_to_string('todo_list_edit_item.html',
         context,
         request=request
     )
