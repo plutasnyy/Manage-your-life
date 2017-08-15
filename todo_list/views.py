@@ -79,7 +79,6 @@ def item_create(request,pk):
     else:
         form = ItemForm()
 
-
     context = {'form': form}
     data['html_form'] = render_to_string('todo_list_add_item.html',
         context,
