@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def Homepage(request):
+def homepage(request):
     return render(request,'calendar.html',{})

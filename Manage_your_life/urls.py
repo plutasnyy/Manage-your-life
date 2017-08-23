@@ -45,5 +45,5 @@ urlpatterns+=[
 
 #calendar_app
 urlpatterns+=[
-    url(r'^calendar$',calendar_app.views.Homepage,name='Calendar Homepage'),
+    url(r'^calendar/',include('calendar_app.urls',namespace='Calendar')),
 ]
