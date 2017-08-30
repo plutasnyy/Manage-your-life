@@ -1,5 +1,4 @@
 function calendar() {
-
   date = new Date();
   day = date.getDate();
   month = date.getMonth();
@@ -37,6 +36,5 @@ function calendar() {
 
   calendar_html += '</tr>';
   calendar_html += '</table>';
-
-  document.getElementById("calendar").innerHTML=calendar_html;
+  document.write(calendar_html);
 }
