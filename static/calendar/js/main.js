@@ -1,5 +1,12 @@
-function calendar() {
-  date = new Date();
+window.onload = function(){
+    calendar();
+}
+
+function calendar(date) {
+  if (date==null){
+    date = new Date();
+  }
+  
   day = date.getDate();
   month = date.getMonth();
   year = date.getFullYear();
@@ -24,17 +31,17 @@ function calendar() {
   for(day_counter = 1; day_counter <= days_in_this_month; day_counter++) {
     week_day %= 7;
     if(week_day == 0)
-      calendar_html += '</tr><tr>';
+      calendar_html += '</tr class="row"><tr>';
 
     if(day == day_counter)
-      calendar_html += '<td style="text-align: center;"><b>' + day_counter + '</b></td>';
+      calendar_html += '<td class="col-md-1" style="text-align: center;"><b>' + day_counter + '</b></td>';
     else
-      calendar_html += '<td style="background-color:9999cc; color:000000; text-align: center;"> ' + day_counter + ' </td>';
+      calendar_html += '<td class="col-md-1" style="background-color:9999cc; color:000000; text-align: center;"> ' + day_counter + ' </td>';
 
-    week_day++
+    week_day++;
   }
 
   calendar_html += '</tr>';
   calendar_html += '</table>';
-  document.write(calendar_html);
+  document.getElementById("calendar").innerHTML = calendar_html;
 }
