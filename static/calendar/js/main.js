@@ -1,7 +1,20 @@
-window.onload = function(){
-    calendar();
-}
+$(document).ready(function(){
+  calendar();
 
+
+  $(".day-box").mouseover(function(){
+    $(this).css( "background-color", "#eaf2ff" );
+  });
+  $(".day-box").mouseleave(function(){
+    $(this).css( "background-color", "white" );
+  });
+
+  $(".day-box").click(function(){
+    let date=$(this).attr()
+    $(".event-box").
+  });
+
+});
 function calendar(date) {
   if (date==null){
     date = new Date();
@@ -34,15 +47,14 @@ function calendar(date) {
       calendar_html += '</tr><tr>';
 
     if(day == day_counter)
-      calendar_html += '<td class="col-md-1" style="padding-top: 10%;text-align: center;"><b>' + day_counter + '</b></td>';
+      calendar_html += '<td class="col-md-1 day-box"><b> data-date' + day_counter + '</b></td>';
     else
-      calendar_html += '<td class="col-md-1" style="padding-top: 10%;background-color:9999cc; color:000000; text-align: center;"> ' + day_counter + ' </td>';
-
+      calendar_html += '<td class="col-md-1 day-box">' + day_counter + ' </td>';
     week_day++;
   }
 
   calendar_html += '</tr>';
   calendar_html += '</table>';
-  calendar_html+= '<div class="col-md-5" style="text-align:centerl"></br></br></br>A tu moze jakies zdarzenia jak sie uda zrobic xD</div>';
+  calendar_html+= '<div class="col-md-5 event-box">A tu moze jakies zdarzenia jak sie uda zrobic xD</div>';
   document.getElementById("calendar").innerHTML = calendar_html;
 }
