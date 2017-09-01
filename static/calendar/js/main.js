@@ -10,8 +10,9 @@ $(document).ready(function(){
   });
 
   $(".day-box").click(function(){
-    let date=$(this).attr()
-    $(".event-box").
+    let date=$(this).attr("date");
+    $(".event-box").addClass('date="'+date+'"');
+    $(".event-box").html(date);
   });
 
 });
@@ -36,6 +37,7 @@ function calendar(date) {
   calendar_html += '<tr><td colspan="7" style="background-color:9999cc; color:000000; text-align: center;">' + months[month] + ' ' + year + '</td></tr>';
   calendar_html += '<tr>';
 
+  var this_date;
   for(week_day = 0; week_day < first_week_day; week_day++) {
     calendar_html += '<td style="background-color:9999cc; color:000000;"> </td>';
   }
@@ -46,10 +48,12 @@ function calendar(date) {
     if(week_day == 0)
       calendar_html += '</tr><tr>';
 
+    this_date=new Date(year,month,day_counter);
+
     if(day == day_counter)
-      calendar_html += '<td class="col-md-1 day-box"><b> data-date' + day_counter + '</b></td>';
+      calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'>" <b> ' + day_counter + '</b></td>';
     else
-      calendar_html += '<td class="col-md-1 day-box">' + day_counter + ' </td>';
+      calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'">' + day_counter + ' </td>';
     week_day++;
   }
 
