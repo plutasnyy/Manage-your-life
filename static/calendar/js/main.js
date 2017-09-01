@@ -51,14 +51,20 @@ function calendar(date) {
     this_date=new Date(year,month,day_counter);
 
     if(day == day_counter)
-      calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'>" <b> ' + day_counter + '</b></td>';
+      calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'"> <b> ' + day_counter + '</b></td>';
     else
       calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'">' + day_counter + ' </td>';
     week_day++;
   }
 
   calendar_html += '</tr>';
+
   calendar_html += '</table>';
+
   calendar_html+= '<div class="col-md-5 event-box">A tu moze jakies zdarzenia jak sie uda zrobic xD</div>';
+  calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
+  calendar_html += '  <li class="previous"><a href="#">Previous</a></li>';
+  calendar_html += '  <li class="next"><a href="#">Next</a></li>';
+  calendar_html += '</ul></div></div>';
   document.getElementById("calendar").innerHTML = calendar_html;
 }
