@@ -1,7 +1,6 @@
 $(document).ready(function(){
   calendar();
 
-
   $(".day-box").mouseover(function(){
     $(this).css( "background-color", "#eaf2ff" );
   });
@@ -15,12 +14,19 @@ $(document).ready(function(){
     $(".event-box").html(date);
   });
 
+  $(".pager .next").click(function(){
+    months_counter++;
+    calendar();
+  });
+  $(".pager .previous").click(function(){
+    months_counter--;
+    calendar();
+  });
 });
-function calendar(date) {
-  if (date==null){
-    date = new Date();
-  }
+var months_counter=0;
 
+function calendar() {
+  date = new Date();
   day = date.getDate();
   month = date.getMonth();
   year = date.getFullYear();
@@ -63,8 +69,8 @@ function calendar(date) {
 
   calendar_html+= '<div class="col-md-5 event-box">A tu moze jakies zdarzenia jak sie uda zrobic xD</div>';
   calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
-  calendar_html += '  <li class="previous"><a href="#">Previous</a></li>';
-  calendar_html += '  <li class="next"><a href="#">Next</a></li>';
+  calendar_html += '  <li class="previous"><a href="">Previous</a></li>';
+  calendar_html += '  <li class="next"><a href="">Next</a></li>';
   calendar_html += '</ul></div></div>';
   document.getElementById("calendar").innerHTML = calendar_html;
 }
