@@ -16,13 +16,17 @@ $(document).ready(function(){
 
   $(".pager .next").click(function(){
     months_counter++;
+
+    console.log(months_counter);
     calendar();
   });
   $(".pager .previous").click(function(){
     months_counter--;
-    calendar();
+    console.log(months_counter);
+    //calendar();
   });
 });
+
 var months_counter=0;
 
 function calendar() {
@@ -34,8 +38,7 @@ function calendar() {
   month += months_counter;
 
   year += Math.floor(month/12);
-  month = month%13;
-
+  month = month%12;
 
   months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 
@@ -76,8 +79,9 @@ function calendar() {
 
   calendar_html+= '<div class="col-md-5 event-box">A tu moze jakies zdarzenia jak sie uda zrobic xD</div>';
   calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
-  calendar_html += '  <li class="previous"><a href="">Previous</a></li>';
-  calendar_html += '  <li class="next"><a href="">Next</a></li>';
+  calendar_html += '  <li class="previous"><a role="button">Previous</a></li>';
+  calendar_html += '  <li class="next"><a role="button">Next</a></li>';
   calendar_html += '</ul></div></div>';
-  document.getElementById("calendar").innerHTML = calendar_html;
+
+  $("#calendar").html(calendar_html);
 }
