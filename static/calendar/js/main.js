@@ -83,5 +83,6 @@ function calendar() {
   calendar_html += '  <li class="next"><a role="button">Next</a></li>';
   calendar_html += '</ul></div></div>';
 
-  $("#calendar").html(calendar_html);
+  document.getElementById("calendar").innerHTML = calendar_html;
+  document.ready();
 }
