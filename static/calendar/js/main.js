@@ -31,6 +31,12 @@ function calendar() {
   month = date.getMonth();
   year = date.getFullYear();
 
+  month += months_counter;
+
+  year += Math.floor(month/12);
+  month = month%13;
+
+
   months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 
   this_month = new Date(year, month, 1);
@@ -43,20 +49,21 @@ function calendar() {
   calendar_html += '<tr><td colspan="7" style="background-color:9999cc; color:000000; text-align: center;">' + months[month] + ' ' + year + '</td></tr>';
   calendar_html += '<tr>';
 
-  var this_date;
-  for(week_day = 0; week_day < first_week_day; week_day++) {
+  for(week_day = 0; week_day < first_week_day; week_day++)
+  {
     calendar_html += '<td style="background-color:9999cc; color:000000;"> </td>';
   }
 
   week_day = first_week_day;
-  for(day_counter = 1; day_counter <= days_in_this_month; day_counter++) {
+  for(day_counter = 1; day_counter <= days_in_this_month; day_counter++)
+  {
     week_day %= 7;
     if(week_day == 0)
       calendar_html += '</tr><tr>';
 
-    this_date=new Date(year,month,day_counter);
+    this_date = new Date(year,month,day_counter);
 
-    if(day == day_counter)
+    if(date.getDate() == this_date.getDate() && date.getMonth() == this_date.getMonth() && date.getFullYear() == this_date.getFullYear())
       calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'"> <b> ' + day_counter + '</b></td>';
     else
       calendar_html += '<td class="col-md-1 day-box" date="'+this_date+'">' + day_counter + ' </td>';
