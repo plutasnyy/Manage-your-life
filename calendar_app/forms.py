@@ -5,4 +5,4 @@ class EventForm(forms.ModelForm):
     class Meta:
         model=Event
         exclude=('modified', )
-        fields=['title', s]
+        fields=['title', ]
