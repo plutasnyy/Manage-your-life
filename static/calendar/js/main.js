@@ -48,12 +48,12 @@ function calendar() {
   first_week_day = this_month.getDay();
   days_in_this_month = Math.round((next_month.getTime() - this_month.getTime()) / (1000 * 60 * 60 * 24));
 
-  calendar_html = '<table class="col-md-7" style="background-color:666699; color:ffffff;">';
+  calendar_html = '<table style="background-color:666699; color:ffffff;">';
   calendar_html += '<tr><td colspan="7" style="background-color:9999cc; color:000000; text-align: center;">' + months[month] + ' ' + year + '</td></tr>';
-  calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
+  calendar_html += '<ul class="pager">';
   calendar_html += '  <li class="previous"><a role="button">Previous</a></li>';
   calendar_html += '  <li class="next"><a role="button">Next</a></li>';
-  calendar_html += '</ul></div></div>';
+  calendar_html += '</ul>';
   calendar_html += '<tr>';
 
   for(week_day = 0; week_day < first_week_day; week_day++)
@@ -78,8 +78,7 @@ function calendar() {
   }
 
   calendar_html += '</tr>';
-  calendar_html += '</table>';
-  calendar_html+= '<div class="col-md-5 event-box">Some events from backend</div>';
 
+  calendar_html += '</table>';
   document.getElementById("calendar").innerHTML = calendar_html;
 }
