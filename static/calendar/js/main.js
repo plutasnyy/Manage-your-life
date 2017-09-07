@@ -1,29 +1,29 @@
 $(document).ready(function(){
   calendar();
+});
 
-  $(".day-box").mouseover(function(){
-    $(this).css( "background-color", "#eaf2ff" );
-  });
-  $(".day-box").mouseleave(function(){
-    $(this).css( "background-color", "white" );
-  });
+$(document).on('click','.day-box',function(){
+  var date=$(this).attr("date");
+  $(".event-box").addClass('date="'+date+'"');
+  $(".event-box").html(date);
+});
 
-  $(".day-box").click(function(){
-    var date=$(this).attr("date");
-    $(".event-box").addClass('date="'+date+'"');
-    $(".event-box").html(date);
-  });
+$(document).on('mouseleave','.day-box',function(){
+  $(this).css( "background-color", "white" );
+});
+$(document).on('mouseover','.day-box',function(){
+  $(this).css( "background-color", "#eaf2ff" );
+});
 
-  $(".pager .next").click(function(){
-    months_counter++;
-    console.log(months_counter);
-    calendar();
-  });
-  $(".pager .previous").click(function(){
-    months_counter--;
-    console.log(months_counter);
-    calendar();
-  });
+$(document).on('click','.pager .next',function(){
+  months_counter++;
+  console.log(months_counter);
+  calendar();
+});
+$(document).on('click','.pager .previous',function(){
+  months_counter--;
+  console.log(months_counter);
+  calendar();
 });
 
 var months_counter=0;
