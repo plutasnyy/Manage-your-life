@@ -17,12 +17,10 @@ $(document).on('mouseover','.day-box',function(){
 
 $(document).on('click','.pager .next',function(){
   months_counter++;
-  console.log(months_counter);
   calendar();
 });
 $(document).on('click','.pager .previous',function(){
   months_counter--;
-  console.log(months_counter);
   calendar();
 });
 
@@ -36,8 +34,13 @@ function calendar() {
 
   month += months_counter;
 
+
   year += Math.floor(month/12);
-  month = month%12;
+  
+  if(month<0)
+    month=12+month%12;
+
+  month = Math.abs(month%12);
 
   months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 
@@ -49,6 +52,10 @@ function calendar() {
 
   calendar_html = '<table class="col-md-7" style="background-color:666699; color:ffffff;">';
   calendar_html += '<tr><td colspan="7" style="background-color:9999cc; color:000000; text-align: center;">' + months[month] + ' ' + year + '</td></tr>';
+  calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
+  calendar_html += '  <li class="previous"><a role="button">Previous</a></li>';
+  calendar_html += '  <li class="next"><a role="button">Next</a></li>';
+  calendar_html += '</ul></div></div>';
   calendar_html += '<tr>';
 
   for(week_day = 0; week_day < first_week_day; week_day++)
@@ -73,14 +80,8 @@ function calendar() {
   }
 
   calendar_html += '</tr>';
-
   calendar_html += '</table>';
-
   calendar_html+= '<div class="col-md-5 event-box">Some events from backend</div>';
-  calendar_html += '<div class="row"><div class=col-md-7><ul class="pager">';
-  calendar_html += '  <li class="previous"><a role="button">Previous</a></li>';
-  calendar_html += '  <li class="next"><a role="button">Next</a></li>';
-  calendar_html += '</ul></div></div>';
 
   document.getElementById("calendar").innerHTML = calendar_html;
 }

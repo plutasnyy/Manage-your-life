@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 def homepage(request):
-    return render(request,'calendar.html',{})
+    if request.user.is_authenticated():
+        user = request.user
+        return render(request,'calendar.html',{})
+    else:
+        return HttpResponseRedirect('/')
