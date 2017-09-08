@@ -1,0 +1,15 @@
+<div class="container">
+   <form method="post" action="{% url 'Calendar:CreateEvent' %}" class="js-event-save-form">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h4 class="modal-title">Create a new Event</h4>
+    </div>
+    <div class="modal-body">
+      {% include 'calendar_event_form.html' %}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-primary">Create Event</button>
+    </div>
+  </form>
+</div>
