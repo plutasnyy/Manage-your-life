@@ -28,5 +28,7 @@ def create_event(request):
         form = EventForm()
 
     context = {'form' : form}
-    data['html_form'] = render_to_string('calendar_create_event.html',context,request=request)
+    data['html_form'] = render_to_string(
+        'calendar_create_event.html',context,request=request
+        )
     return JsonResponse(data)

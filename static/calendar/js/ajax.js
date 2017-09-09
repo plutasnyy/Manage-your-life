@@ -23,10 +23,10 @@ $(function(){
       dataType: 'json',
       succes: function(data){
         if(data.form_is_valid){
-          $("#modal-add_list").modal("hide");
-          window.location.reload();
+          $("#modal-event").modal("hide");
         }
         else{
+          alert("tutaj mnie nie ma");
           $("#modal-event .modal-content").html(data.html_form);
         }
       }
