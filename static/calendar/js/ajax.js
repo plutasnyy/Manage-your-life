@@ -22,7 +22,9 @@ $(function(){
       type: form.attr("method"),
       dataType: 'json',
       succes: function(data){
+        alert("tutej jestym");
         if(data.form_is_valid){
+          alert("data git");
           $("#modal-event").modal("hide");
         }
         else{
@@ -34,5 +36,5 @@ $(function(){
   };
 
   $(".js-create-event").click(loadForm);
-  $("#modal-event").on("submit",".js-event-create-form",saveForm);
+  $("#modal-event").on("submit",".js-event-save-form",saveForm);
 });

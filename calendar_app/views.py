@@ -18,10 +18,10 @@ def create_event(request):
     if request.method == "POST":
         form = EventForm(request.POST)
         if form.is_valid():
-            data['form_is_valid'] = True
             new_event = form.save(commit=False)
             new_event.created_by = request.user
             new_event.save()
+            data['form_is_valid'] = True
         else:
             data['form_is_valid'] = False
     else:
