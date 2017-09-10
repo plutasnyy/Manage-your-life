@@ -22,16 +22,16 @@ $(function(){
       type: form.attr("method"),
       dataType: 'json',
       succes: function(data){
-        alert("tutej jestym");
         if(data.form_is_valid){
-          alert("data git");
           $("#modal-event").modal("hide");
         }
         else{
-          alert("tutaj mnie nie ma");
           $("#modal-event .modal-content").html(data.html_form);
         }
-      }
+      },
+      error: function(data) {
+          console.log(data);
+        }
     });
   };
 

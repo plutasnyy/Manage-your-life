@@ -8,7 +8,6 @@ def homepage(request):
     if request.user.is_authenticated():
         user = request.user
         return render(request,'calendar.html',{'form':EventForm})
-
     else:
         return HttpResponseRedirect('/')
 

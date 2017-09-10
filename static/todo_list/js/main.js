@@ -18,7 +18,7 @@ $(function () {
   };
 
 var saveForm = function () {
-    var form = $(this);
+  var form = $(this);
   form.attr("action",global_url);
   $.ajax({
     url: form.attr("action"),
