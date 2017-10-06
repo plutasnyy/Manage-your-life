@@ -14,18 +14,8 @@
 	<div class="row">
 		<div id="calendar" class="col-md-7"></div>
 	  <div class="col-md-5 event-box">
-			<button type="button" class="btn btn-primary js-create-event" data-url="{% url 'Calendar:CreateEvent' %}">
-			  <span class="glyphicon glyphicon-plus"></span>
-			  New Event
-			</button>
+			{{form}}
 	  </div>
 	</div>
 
-	<div class="modal fade" id="modal-event" role="dialog">
-	  <div class="modal-dialog modal-md">
-	    <div class="modal-content">
-
-	    </div>
-	  </div>
-	</div>
 {% endblock %}
