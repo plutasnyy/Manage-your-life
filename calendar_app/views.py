@@ -20,4 +20,11 @@ def homepage(request):
         return HttpResponseRedirect('/')
 
 def event_list(request):
-    return "example"
+    data = dict()
+    context = {'events' : EventModel.objects.all(),
+                'form': EventForm}
+    data['html_form'] = render_to_string('events_list.html',
+        context,
+        request=request
+    )
+    return JsonResponse(data)

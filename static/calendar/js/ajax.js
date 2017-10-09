@@ -3,7 +3,7 @@ $(function(){
     var btn = $(this);
     $.ajax({
       url: btn.attr("data-url"),
-      type: "get",
+      type: "GET",
       dataType: "json",
       beforeSend: function(){
         $("#modal-event").modal("show");
