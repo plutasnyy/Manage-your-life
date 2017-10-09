@@ -2,10 +2,30 @@ $(document).ready(function(){
   calendar();
 });
 
+get_events_list = function(date){
+  console.log("robie to");
+  var url = {% url 'Calendar:EventList' %};
+  console.log(url);
+  $.ajax({
+    url: url,
+    type: post,
+    dataType: 'json',
+    success: function(data){
+      return data;
+    },
+    error: fuction(data){
+      console.log(data);
+      return "";
+    }
+  });
+};
+
 $(document).on('click','.day-box',function(){
   var date=$(this).attr("date");
   $(".event-box").addClass('date="'+date+'"');
-  $(".event-box").html(date);
+//  var output = get_events_list(date);
+  var output = "";
+  $(".event-box").html(output);
 });
 
 $(document).on('mouseleave','.day-box',function(){

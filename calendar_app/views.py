@@ -18,3 +18,6 @@ def homepage(request):
         return render(request,'calendar.html',{'form':EventForm})
     else:
         return HttpResponseRedirect('/')
+
+def event_list(request):
+    return "example"
