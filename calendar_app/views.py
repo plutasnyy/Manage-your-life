@@ -4,27 +4,17 @@ from django.template.loader import render_to_string
 from calendar_app.models import Event as EventModel
 from calendar_app.forms import EventForm
 
+
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic.edit import CreateView
+
 def homepage(request):
     if request.user.is_authenticated():
-        user = request.user
+        form = EventForm(request.POST or None)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.created_by = request.user
+            event.save()
         return render(request,'calendar.html',{'form':EventForm})
     else:
         return HttpResponseRedirect('/')
-
-def create_event(request):
-    data = dict()
-
-    if request.method == "POST":
-        form = EventForm()
-        if form.is_valid():
-            data['form_is_valid'] = True
-        else:
-            data['form_is_valid'] = False
-    else:
-        form = EventForm()
-
-    context = {'form' : form}
-    data['html_form'] = render_to_string(
-        'calendar_create_event.html',context,request=request
-        )
-    return JsonResponse(data)

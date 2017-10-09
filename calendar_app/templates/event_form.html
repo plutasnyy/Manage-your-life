@@ -1,0 +1,7 @@
+<form action="" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+      <h6 style="float:left;">{{field.help_text}}</h6> {{field}} </br></br>
+  {% endfor %}
+  <input type="submit" value="Save" />
+</form>

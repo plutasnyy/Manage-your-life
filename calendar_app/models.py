@@ -14,8 +14,8 @@ class Event(models.Model):
 
     all_day_event = models.BooleanField(help_text = "All Day:")
 
-    start_time = models.TimeField(help_text = "Start Time: ")
-    end_time = models.TimeField(help_text = "End Time: ")
+    start_time = models.TimeField(help_text = "Start Time: ", blank=True, null=True)
+    end_time = models.TimeField(help_text = "End Time: ", blank=True, null=True)
 
 
     id=models.AutoField(primary_key=True)

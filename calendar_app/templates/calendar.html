@@ -14,13 +14,7 @@
 	<div class="row">
 		<div id="calendar" class="col-md-7"></div>
 	  <div class="col-md-5 event-box">
-			<form action="" method="post">
-		    {% csrf_token %}
-				{% for field in form %}
-						<h6 style="float:left;">{{field.help_text}}</h6> {{field}} </br></br>
-				{% endfor %}
-		    <input type="submit" value="Submit" />
-			</form>
+			{% include 'event_form.html' %}
 	  </div>
 	</div>
 
